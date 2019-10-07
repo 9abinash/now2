@@ -22,14 +22,12 @@ load_model()
 
 def prepare_image(image, target):
     """Pre-process image to be ran with the model.
-
     Parameters
     ----------
     image : BytesIO
         Bytes object from user uploaded from interface
     target : tuple
         Image size to resize (244,244)
-
     Returns
     -------
     image
@@ -93,10 +91,8 @@ def home():
     if request.method == "GET":
         return """
         <!doctype html>
-        <title>Image Classification</title>
-        <h1>Image Classification</h1>
-        <h3>ResNet50 trained on ImageNet</h3>
-        <strong>Note:</strong> output will be in JSON
+        <title>Pet Predictor by Abinash</title>
+        <strong>Note:</strong> output will be in JSON -  Working out to make it better
         <form method=post enctype=multipart/form-data>
         <p><input type=file name=file>
             <input type=submit value=Select Prediction Image>
@@ -120,14 +116,16 @@ def home():
         # loop over the results and add them to the list of
         # returned predictions
         for (imagenetID, label, prob) in results[0]:
-            r = {"label": label, "probability": float(prob)}
-            data["predictions"].append(r)
+            # r = {"label": label, "probability": float(prob)}
+            data["predictions"].append(label)
+			
 
         # indicate that the request was a success
         data["success"] = True
 
     # return the data dictionary as a JSON response
-    return flask.jsonify(data)
+    #return flask.jsonify(data)
+	return data
 
 
 if __name__ == "__main__":
