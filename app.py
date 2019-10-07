@@ -124,8 +124,7 @@ def home():
         data["success"] = True
 
     # return the data dictionary as a JSON response
-    #return flask.jsonify(data)
-	return data
+    return flask.jsonify(data)
 
 
 if __name__ == "__main__":
