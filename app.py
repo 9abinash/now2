@@ -91,8 +91,10 @@ def home():
     if request.method == "GET":
         return """
         <!doctype html>
-        <title>Pet Predictor by Abinash</title>
-        <strong>Note:</strong> output will be in JSON -  Working out to make it better
+        <title>Image Classification</title>
+        <h1>Pet predictor by Abinash</h1>
+        <h3>ResNet50 trained on ImageNet</h3>
+        <strong>Note:</strong> output will be in JSON Please bear with me
         <form method=post enctype=multipart/form-data>
         <p><input type=file name=file>
             <input type=submit value=Select Prediction Image>
@@ -118,7 +120,6 @@ def home():
         for (imagenetID, label, prob) in results[0]:
             r = {"label": label, "probability": float(prob)}
             data["predictions"].append(r)
-			
 
         # indicate that the request was a success
         data["success"] = True
