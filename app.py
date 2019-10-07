@@ -116,8 +116,8 @@ def home():
         # loop over the results and add them to the list of
         # returned predictions
         for (imagenetID, label, prob) in results[0]:
-            # r = {"label": label, "probability": float(prob)}
-            data["predictions"].append(label)
+            r = {"label": label, "probability": float(prob)}
+            data["predictions"].append(r)
 			
 
         # indicate that the request was a success
