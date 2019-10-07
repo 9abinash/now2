@@ -11,8 +11,13 @@ app = flask.Flask(__name__)
 model = None
 
 
-from keras.models import load_model
-model = load_model('resnet50_weights_tf_dim_ordering_tf_kernels.h5')
+def load_model():
+    """Load ResNet50 Keras model."""
+    global model
+    model = ResNet50(weights="imagenet")
+
+
+load_model()
 
 
 def prepare_image(image, target):
