@@ -8,16 +8,18 @@ import flask
 from flask import request
 
 app = flask.Flask(__name__)
-model = None
+#model = None
 
 
-def load_model():
-    """Load ResNet50 Keras model."""
-    global model
-    model = ResNet50(weights="imagenet")
+#def load_model():
+#    """Load ResNet50 Keras model."""
+#    global model
+#    model = ResNet50(weights="imagenet")
 
 
-load_model()
+#load_model()
+from keras.models import load_model
+model = load_model('model.h5')
 
 
 def prepare_image(image, target):
